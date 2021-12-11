@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueAxios from "vue-axios";
 import JWT from "./jwt";
 import axios from "axios";
-import { API_URL } from "../../config/HTTP";
+import { API_URL } from "../../config/HTTPS";
 
 const Api = {
   init() {
