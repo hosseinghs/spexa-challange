@@ -36,9 +36,6 @@ export default {
     submitForm() {
       this.loginRegisterUser();
     },
-    log(a) {
-      console.log(a);
-    },
   },
 };
 </script>
