@@ -21,6 +21,12 @@ export default {
 </script>
 
 <style scoped>
+button {
+  width: 100%;
+  padding: 8px 32px;
+  border-radius: 4px;
+  border: 1px solid;
+}
 .primary {
   background-color: #000;
   color: #fff;
@@ -29,10 +35,8 @@ export default {
 .secondry {
   background-color: #fff;
   color: #000;
-  border: 1px solid #000;
-  border-radius: 4px;
 }
-.primary,
+.primary:hover,
 .secondry:hover {
   background-color: #555;
 }
