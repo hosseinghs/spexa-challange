@@ -1,9 +1,7 @@
 <template>
-  <div class="btn-wrapper">
-    <button :class="login ? 'primary' : 'secondry'" v-bind="$attrs">
-      {{ title }}
-    </button>
-  </div>
+  <button :class="login ? 'primary' : 'secondry'" v-bind="$attrs">
+    {{ title }}
+  </button>
 </template>
 
 <script>
