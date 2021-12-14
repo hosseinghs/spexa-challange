@@ -7,7 +7,7 @@ export const loginRegister = {
   },
   mutations: {
     SET_USER_DATA(state, { k, v }) {
-      state[k] = v;
+      state.userData[k] = v;
     },
   },
   actions: {
@@ -16,6 +16,7 @@ export const loginRegister = {
     },
     async loginRegisterUser({ state }) {
       const data = state.userData;
+      console.log(data);
       console.log(await loginRegisterApi(data));
     },
   },
