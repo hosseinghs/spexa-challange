@@ -1,10 +1,11 @@
 const baseUrl = "user";
-import api from "./api";
+import Api from "./api";
 
-export function login(data) {
-  return api.post(`${baseUrl}/login`, data);
+export function loginRegisterApi(data) {
+  console.log(Api);
+  return Api.post(`${baseUrl}/login`, data);
 }
 
-export function getRefreshToken(token) {
-  return api.post(`${baseUrl}/refresh`, token);
+export function getRefreshTokenApi(token) {
+  return Api.post(`${baseUrl}/refresh`, token);
 }

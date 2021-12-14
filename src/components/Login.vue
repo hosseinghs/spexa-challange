@@ -2,14 +2,24 @@
   <div class="login-wrapper">
     <form class="center" @submit.prevent="submitForm()">
       <h3>Try the product out for free.</h3>
-      <Input placeholder="email" />
-      <Input type="password" placeholder="password" />
+      <Input
+        type="email"
+        placeholder="email"
+        @inputChange="setUserData({ k: 'email', v: $event })"
+      />
+
+      <Input
+        type="password"
+        placeholder="password"
+        @inputChange="setUserData({ k: 'password', v: $event })"
+      />
       <Button title="Register / Login" />
     </form>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 import Input from "../components/form/Input.vue";
 import Button from "../components/btn/Button.vue";
 export default {
@@ -18,9 +28,16 @@ export default {
     Input,
     Button,
   },
+  computed: {
+    ...mapGetters("loginRegister", ["user"]),
+  },
   methods: {
+    ...mapActions("loginRegister", ["setUserData", "loginRegisterUser"]),
     submitForm() {
-      console.log("submit");
+      this.loginRegisterUser();
+    },
+    log(a) {
+      console.log(a);
     },
   },
 };

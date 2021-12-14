@@ -1,6 +1,10 @@
 <template>
   <div class="input-wrapper">
-    <input :type="type" :placeholder="placeholder" />
+    <input
+      :type="type"
+      :placeholder="placeholder"
+      @change="$emit('inputChange', $event.target.value)"
+    />
   </div>
 </template>
 
