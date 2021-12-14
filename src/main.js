@@ -4,10 +4,8 @@ import store from "./store";
 import Api from "./services/api";
 import "./assets/main.css";
 Vue.config.productionTip = false;
-
+Api.init();
 new Vue({
   store,
-  Api,
-  App,
   render: (h) => h(App),
 }).$mount("#app");
