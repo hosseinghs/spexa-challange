@@ -2,7 +2,6 @@ const baseUrl = "user";
 import Api from "./api";
 
 export function loginRegisterApi(data) {
-  console.log(Api);
   return Api.post(`${baseUrl}/login`, data);
 }
 
