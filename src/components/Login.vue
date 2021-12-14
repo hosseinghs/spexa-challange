@@ -13,7 +13,7 @@
         placeholder="password"
         @inputChange="setUserData({ k: 'password', v: $event })"
       />
-      <Button title="Register / Login" />
+      <Button login title="Register / Login" />
     </form>
   </div>
 </template>
