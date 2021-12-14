@@ -1,5 +1,7 @@
 import { User } from "../../models/user";
 import { loginRegisterApi } from "../../services/auth";
+import { setToken } from "../../services/jwt";
+import Api from "../../services/api";
 export const loginRegister = {
   namespaced: true,
   state: {
@@ -17,7 +19,9 @@ export const loginRegister = {
     async loginRegisterUser({ state }) {
       const userData = state.userData;
       const res = await loginRegisterApi(userData);
-      console.log(res.data.data.access_token);
+      window.localStorage.setItem("email", userData.email);
+      setToken(res.data.data.access_token);
+      Api.addAuthorizationHeader();
     },
   },
   getters: {
