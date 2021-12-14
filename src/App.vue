@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Header />
+    <!-- <Header /> -->
     <Login />
   </div>
 </template>
 
 <script>
 import Login from "./components/Login.vue";
-import Header from "./components/Header.vue";
+// import Header from "./components/Header.vue";
 export default {
   name: "App",
   components: {
     Login,
-    Header,
+    // Header,
   },
 };
 </script>

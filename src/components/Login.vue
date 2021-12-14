@@ -28,13 +28,19 @@ export default {
     Input,
     Button,
   },
+  data() {
+    return {
+      showError: false,
+    };
+  },
   computed: {
     ...mapGetters("loginRegister", ["user"]),
   },
   methods: {
     ...mapActions("loginRegister", ["setUserData", "loginRegisterUser"]),
-    submitForm() {
-      this.loginRegisterUser();
+    async submitForm() {
+      const res = this.loginRegisterUser();
+      if (!res) this.showError = true;
     },
   },
 };
