@@ -1,13 +1,23 @@
-:root,
 body {
   background-color: #f2f2f2;
   margin: 0;
+}
+
+header {
+  background-color: #fff;
+  padding: 8px 32px;
+}
+
+header > div {
+  display: flex;
+  align-items: center;
 }
 
 button {
   outline: none;
   border: none;
   cursor: pointer;
+  display: block;
   padding: 0;
 }
 
@@ -15,11 +25,6 @@ input {
   border: 1px solid #000;
   border-radius: 4px;
   padding: 0;
-}
-
-button,
-input {
-  width: 100%;
 }
 
 .input-wrapper,
