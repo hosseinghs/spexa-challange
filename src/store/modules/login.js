@@ -15,9 +15,9 @@ export const loginRegister = {
       commit("SET_USER_DATA", { k, v });
     },
     async loginRegisterUser({ state }) {
-      const data = state.userData;
-      console.log(data);
-      console.log(await loginRegisterApi(data));
+      const userData = state.userData;
+      const res = await loginRegisterApi(userData);
+      console.log(res.data.data.access_token);
     },
   },
   getters: {
