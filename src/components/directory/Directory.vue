@@ -3,16 +3,20 @@
     <Breadcrump />
     <div>
       <span class="material-icons driver"> drive_folder_upload </span>
+      <h3>There is nothing to show</h3>
+      <Button title="Create directory" />
     </div>
   </div>
 </template>
 
 <script>
 import Breadcrump from "../breadcrump";
+import Button from "../btn/Button.vue";
 export default {
   name: "directory-component",
   components: {
     Breadcrump,
+    Button,
   },
 };
 </script>
