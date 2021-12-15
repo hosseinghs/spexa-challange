@@ -11,20 +11,28 @@ export const loginRegister = {
   },
   state: {
     userData: new User(),
+    isLoggedIn: false,
   },
   mutations: {
     SET_USER_DATA(state, { k, v }) {
       state.userData[k] = v;
+    },
+    SET_LOGIN_STATE(state, bool) {
+      state.isLoggedIn = bool;
     },
   },
   actions: {
     setUserData({ commit }, { k, v }) {
       commit("SET_USER_DATA", { k, v });
     },
-    async loginRegisterUser({ state, dispatch }) {
+    setLoginState({ commit }, bool) {
+      commit("SET_LOGIN_STATE", bool);
+    },
+    async loginRegisterUser({ state, commit, dispatch }) {
       const { email, password } = state.userData;
       if (email && password) {
         const res = await loginRegisterApi({ email, password });
+        commit("SET_LOGIN_STATE", true);
         window.localStorage.setItem("email", email);
         setToken(res.data.data.access_token);
         Api.addAuthorizationHeader();
@@ -34,5 +42,6 @@ export const loginRegister = {
   },
   getters: {
     user: (state) => state.userData,
+    isLoggedIn: (state) => state.isLoggedIn,
   },
 };
