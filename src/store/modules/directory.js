@@ -3,16 +3,19 @@ import {
   getDirectoryContentApi,
   deleteDirectoryApi,
 } from "../../services/directory";
+
 import { addToArr } from "../../utils/general";
+
 export const directory = {
   namespaced: true,
   state: {
     visible: false,
+    newDirectoryTitle: null,
     directories: [],
   },
   mutations: {
-    SET_VISIBILITY(state, bool) {
-      state.visible = bool;
+    SET_NEW_DIRECTORY_TITLE(state, title) {
+      state.newDirectoryTitle = title;
     },
     SET_DIRECTORIES_LIST(state, payload) {
       const arr = state.directories;
@@ -21,8 +24,12 @@ export const directory = {
     },
   },
   actions: {
-    async createNewDirectory(context, title) {
-      console.log(await createNewDirectoryApi(title));
+    setNewDirectoryTitle({ commit }, title) {
+      commit("SET_NEW_DIRECTORY_TITLE", title);
+    },
+    async createNewDirectory({ state }) {
+      const title = state.newDirectoryTitle;
+      await createNewDirectoryApi(title);
     },
     async getDirectoryContent({ commit }) {
       const res = await getDirectoryContentApi();
