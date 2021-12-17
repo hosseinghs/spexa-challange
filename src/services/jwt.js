@@ -10,10 +10,10 @@ export const setToken = (token) => {
   window.localStorage.setItem(TOKEN_KEY, token);
 };
 
-export const logOut = () => {
+export const deleteToken = () => {
   window.localStorage.removeItem(TOKEN_KEY);
   window.localStorage.removeItem("rootId");
   window.localStorage.removeItem("email");
 };
 
-export default { TOKEN_KEY, getToken, setToken, logOut };
+export default { TOKEN_KEY, getToken, setToken, deleteToken };
