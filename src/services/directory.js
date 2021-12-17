@@ -1,14 +1,16 @@
 import Api from "./api";
 const baseUrl = "directory";
 
-export function createNewDirectoryApi(title, id) {
-  return Api.post(`${baseUrl}/${id}`, { title });
+const rootId = localStorage.getItem("rootId");
+
+export function createNewDirectoryApi(title) {
+  return Api.post(`${baseUrl}/${rootId}`, { title });
 }
 
-export function getDirectoryContentApi(id) {
-  return Api.get(`${baseUrl}/${id}`);
+export function getDirectoryContentApi() {
+  return Api.get(`${baseUrl}/${rootId}`);
 }
 
-export function deleteDirectoryApi(id) {
-  return Api.delete(`${baseUrl}/${id}`);
-}
+// export function deleteDirectoryApi(id) {
+//   return Api.delete(`${baseUrl}/${rootId}`);
+// }
