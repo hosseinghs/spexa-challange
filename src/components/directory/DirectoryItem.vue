@@ -1,22 +1,27 @@
 <template>
   <div class="directory-item-wrapper">
-    <h3>h3</h3>
-    <div>
-      <Input placeholder="title" @inputChange="createNewDirectory($event)" />
-    </div>
-    <div class="actions">
-      <div @click.stop="setModalState(false)">
-        <Button title="cancel" />
-      </div>
-      <div>
-        <Button title="Create directory" />
-      </div>
-    </div>
+    <h3 class="mb-6">h3</h3>
+    <v-form ref="addCategoryForm" @submit.prevent="submitForm()">
+      <Input
+        :rules="[mustFillRule]"
+        placeholder="title"
+        @change="setNewDirectoryTitle($event)"
+      />
+      <v-row class="actions mt-6 mb-">
+        <v-col md="5">
+          <Button @click.stop="setModalState(false)" title="cancel" />
+        </v-col>
+        <v-col cols="7">
+          <Button type="submit" title="Create directory" />
+        </v-col>
+      </v-row>
+    </v-form>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import { mustFillRule } from "../../utils/validation";
 import Input from "../form/Input.vue";
 import Button from "../btn/Button.vue";
 export default {
@@ -32,19 +37,20 @@ export default {
     Button,
   },
   methods: {
+    mustFillRule,
     ...mapActions("modal", ["setModalState"]),
-    ...mapActions("directory", ["createNewDirectory"]),
-
-    log(v) {
-      console.log(v);
+    ...mapActions("directory", ["createNewDirectory", "setNewDirectoryTitle"]),
+    submitForm() {
+      if (this.$refs.addCategoryForm.validate()) this.createNewDirectory();
     },
   },
 };
 </script>
 
 <style scoped>
-/* .directory-item-wrapper {
-} */
+.directory-item-wrapper {
+  padding: 1rem;
+}
 
 .actions {
   display: flex;
