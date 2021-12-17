@@ -6,10 +6,12 @@ Vue.use(Vuex);
 
 import { loginRegister } from "./modules/login";
 import { modal } from "./modules/modal";
+import { directory } from "./modules/directory";
 
 export default createStore(Vuex.Store, {
   modules: {
     loginRegister,
     modal,
+    directory,
   },
 });
