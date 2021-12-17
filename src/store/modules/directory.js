@@ -33,9 +33,8 @@ export const directory = {
     },
     async getDirectoryContent({ commit }) {
       const res = await getDirectoryContentApi();
-      if (res.status === 200) {
+      if (res.status === 200)
         commit("SET_DIRECTORIES_LIST", res.data.data.directories);
-      }
     },
     async deleteDirectory(context, id) {
       const res = await deleteDirectoryApi(id);

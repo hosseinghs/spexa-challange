@@ -28,10 +28,9 @@ export const loginRegister = {
     },
     async loginRegisterUser({ state, commit }) {
       const { email, password } = state.userData;
-      const res = await loginRegisterApi({ email, password });
+      await loginRegisterApi({ email, password });
       commit("SET_LOGIN_STATE", true);
       window.localStorage.setItem("email", email);
-      window.localStorage.setItem("rootId", res.data.data.root_directory_id);
       return true;
     },
   },
