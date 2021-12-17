@@ -5,7 +5,7 @@
       <Input placeholder="title" @inputChange="createNewDirectory($event)" />
     </div>
     <div class="actions">
-      <div @click.stop="setLoginState(false)">
+      <div @click.stop="setModalState(false)">
         <Button title="cancel" />
       </div>
       <div>
@@ -32,7 +32,7 @@ export default {
     Button,
   },
   methods: {
-    ...mapActions("modal", ["setLoginState"]),
+    ...mapActions("modal", ["setModalState"]),
     ...mapActions("directory", ["createNewDirectory"]),
 
     log(v) {
