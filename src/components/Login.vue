@@ -1,20 +1,29 @@
 <template>
   <div class="login-wrapper">
-    <form class="center" @submit.prevent="submitForm()">
-      <h3>Try the product out for free.</h3>
-      <Input
-        type="email"
-        placeholder="email"
-        @inputChange="setUserData({ k: 'email', v: $event })"
-      />
-
-      <Input
-        type="password"
-        placeholder="password"
-        @inputChange="setUserData({ k: 'password', v: $event })"
-      />
-      <Button login title="Register / Login" />
-    </form>
+    <v-col cols="3">
+      <v-card elevation="0">
+        <v-form
+          class="text-center"
+          ref="loginForm"
+          @submit.prevent="submitForm()"
+        >
+          <h3 class="mb-10">Try the product out for free.</h3>
+          <Input
+            type="email"
+            placeholder="email"
+            :rules="[mustFillRule, emailFormatRule]"
+            @change="setUserData({ k: 'email', v: $event })"
+          />
+          <Input
+            type="password"
+            placeholder="password"
+            :rules="[mustFillRule]"
+            @change="setUserData({ k: 'password', v: $event })"
+          />
+          <Button type="submit" login title="Register / Login" />
+        </v-form>
+      </v-card>
+    </v-col>
   </div>
 </template>
 
@@ -22,6 +31,7 @@
 import { mapActions, mapGetters } from "vuex";
 import Input from "../components/form/Input.vue";
 import Button from "../components/btn/Button.vue";
+import { mustFillRule, emailFormatRule } from "../utils/validation";
 export default {
   name: "login-component",
   components: {
@@ -37,10 +47,11 @@ export default {
     ...mapGetters("loginRegister", ["user"]),
   },
   methods: {
+    mustFillRule,
+    emailFormatRule,
     ...mapActions("loginRegister", ["setUserData", "loginRegisterUser"]),
     async submitForm() {
-      const res = this.loginRegisterUser();
-      if (!res) this.showError = true;
+      if (this.$refs.loginForm.validate()) this.loginRegisterUser();
     },
   },
 };
@@ -52,9 +63,5 @@ export default {
   height: 100vh;
   display: grid;
   place-items: center;
-}
-.center {
-  width: 15%;
-  margin: 0 auto;
 }
 </style>
