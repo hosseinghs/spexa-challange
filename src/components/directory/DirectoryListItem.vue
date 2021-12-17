@@ -5,7 +5,7 @@
       <img src="../../assets/img/folder.png" alt="more-icon" />
       <span>{{ title }}</span>
     </div>
-    <div @click="setLoginState(true)">
+    <div @click="setModalState(true)">
       <img src="../../assets/img/add.png" alt="add" />
     </div>
     <Modal>
@@ -32,7 +32,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("modal", ["setLoginState"]),
+    ...mapActions("modal", ["setModalState"]),
     showOptions() {
       console.log("show options");
     },
