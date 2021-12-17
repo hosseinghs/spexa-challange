@@ -1,18 +1,18 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import { getToken } from "../services/jwt";
+// import { getToken } from "../services/jwt";
 Vue.use(VueRouter);
 
-function guardMyroute(to, from, next) {
-  setTimeout(() => {
-    const token = getToken();
-    if (token) {
-      next();
-    } else {
-      next("/");
-    }
-  }, 250);
-}
+// function guardMyroute(to, from, next) {
+//   setTimeout(() => {
+//     const token = getToken();
+//     if (token) {
+//       next();
+//     } else {
+//       next("/");
+//     }
+//   }, 250);
+// }
 
 const routes = [
   {
@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/directories",
     name: "directories",
-    beforeEnter: guardMyroute,
+    // beforeEnter: guardMyroute,
     component: () => import("../components/directory/Directory.vue"),
   },
 ];
