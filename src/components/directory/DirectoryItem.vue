@@ -40,8 +40,11 @@ export default {
     mustFillRule,
     ...mapActions("modal", ["setModalState"]),
     ...mapActions("directory", ["createNewDirectory", "setNewDirectoryTitle"]),
-    submitForm() {
-      if (this.$refs.addCategoryForm.validate()) this.createNewDirectory();
+    async submitForm() {
+      if (this.$refs.addCategoryForm.validate()) {
+        const res = this.createNewDirectory();
+        if (res) this.setModalState(false);
+      }
     },
   },
 };
