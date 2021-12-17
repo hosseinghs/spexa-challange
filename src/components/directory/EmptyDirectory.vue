@@ -1,6 +1,5 @@
 <template>
   <div class="empty-directory-wrapper">
-    <Breadcrump />
     <div>
       <img src="../../assets/img/drive.png" alt="drive" />
       <h3>There is nothing to show</h3>
@@ -16,13 +15,11 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Breadcrump from "../breadcrump";
 import Button from "../btn/Button.vue";
 import Modal from "../Modal.vue";
 import DirectoryItem from "./DirectoryItem.vue";
 export default {
   components: {
-    Breadcrump,
     Button,
     Modal,
     DirectoryItem,
@@ -37,4 +34,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.empty-directory-wrapper {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+</style>
