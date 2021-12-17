@@ -1,35 +1,26 @@
 <template>
   <div class="directory-wrapper">
-    <Breadcrump />
-    <div>
-      <span class="material-icons driver"> drive_folder_upload </span>
-      <h3>There is nothing to show</h3>
-      <div @click.stop="setLoginState(true)">
-        <Button title="Create directory" />
-      </div>
-    </div>
-    <Modal>
-      <DirectoryItem />
-    </Modal>
+    <DirectoryList v-if="directories.length > 0" />
+    <EmptyDirectory v-else />
   </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import Breadcrump from "../breadcrump";
-import Button from "../btn/Button.vue";
-import Modal from "../Modal.vue";
-import DirectoryItem from "./DirectoryItem.vue";
+import { mapGetters, mapActions } from "vuex";
+import EmptyDirectory from "./EmptyDirectory.vue";
+import DirectoryList from "./DirectoryList.vue";
 export default {
   name: "directory-component",
-  components: {
-    Breadcrump,
-    Button,
-    Modal,
-    DirectoryItem,
+  components: { EmptyDirectory, DirectoryList },
+  computed: {
+    ...mapGetters("directory", ["directories"]),
   },
   methods: {
     ...mapActions("modal", ["setLoginState"]),
+    ...mapActions("directory", ["getDirectoryContent"]),
+  },
+  created() {
+    this.getDirectoryContent();
   },
 };
 </script>
@@ -39,6 +30,9 @@ export default {
   width: 70%;
   margin: 0 auto;
   text-align: center;
+  display: grid;
+  place-items: center;
+  height: calc(100vh - 75px);
 }
 
 .driver {
