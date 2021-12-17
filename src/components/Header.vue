@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <div @change.stop="deleteToken()">
+      <div @click="logOut()">
         <Button title="Logout" />
       </div>
       <span>{{ userEmail }}</span>
@@ -11,7 +11,7 @@
 
 <script>
 import Button from "./btn/Button.vue";
-import { deleteToken } from "../services/jwt";
+import { logOut } from "../services/jwt";
 export default {
   name: "header-component",
   components: {
@@ -25,7 +25,7 @@ export default {
     },
   },
   methods: {
-    deleteToken,
+    logOut,
   },
 };
 </script>
