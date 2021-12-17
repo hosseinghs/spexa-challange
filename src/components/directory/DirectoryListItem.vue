@@ -1,26 +1,36 @@
 <template>
   <div class="directory-list-item-wrapper">
-    <div class="i">
-      <span class="more" @click="showOptions">...</span>
+    <div v-for="{ id, title } in items" :key="id" class="i">
+      <div class="more" @click="showOptions">...</div>
       <img src="../../assets/img/folder.png" alt="more-icon" />
-      <span>{{ directoryName }}</span>
+      <span>{{ title }}</span>
     </div>
     <div @click="setLoginState(true)">
       <img src="../../assets/img/add.png" alt="add" />
     </div>
+    <Modal>
+      <DirectoryItem />
+    </Modal>
   </div>
 </template>
 
 <script>
 import { mapActions } from "vuex";
+import Modal from "../Modal.vue";
+import DirectoryItem from "./DirectoryItem.vue";
 export default {
   name: "directory-list-item-component",
+  components: {
+    Modal,
+    DirectoryItem,
+  },
   props: {
-    directoryName: {
-      type: String,
-      default: "directoryName",
+    items: {
+      type: Array,
+      default: () => [],
     },
   },
+
   methods: {
     ...mapActions("modal", ["setLoginState"]),
     showOptions() {

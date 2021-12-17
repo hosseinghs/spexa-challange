@@ -1,24 +1,18 @@
 <template>
   <div>
-    <DirectoyListItem
-      v-for="{ id, title } in items"
-      :directoryName="title"
-      :key="id"
-    />
+    <DirectoyListItem :items="directories" />
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import DirectoyListItem from "./DirectoryListItem.vue";
 export default {
-  props: {
-    items: {
-      type: Array,
-      default: () => [],
-    },
-  },
   components: {
     DirectoyListItem,
+  },
+  computed: {
+    ...mapGetters("directory", ["directories"]),
   },
 };
 </script>
