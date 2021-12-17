@@ -1,7 +1,5 @@
 import { User } from "../../models/user";
 import { loginRegisterApi } from "../../services/auth";
-import { setToken } from "../../services/jwt";
-import Api from "../../services/api";
 import { notifModule } from "./notif";
 
 export const loginRegister = {
@@ -35,8 +33,6 @@ export const loginRegister = {
         commit("SET_LOGIN_STATE", true);
         window.localStorage.setItem("email", email);
         window.localStorage.setItem("rootId", res.data.data.root_directory_id);
-        setToken(res.data.data.access_token);
-        Api.addAuthorizationHeader();
         return true;
       } else dispatch("notifModule/setNotifState", { root: true });
     },
