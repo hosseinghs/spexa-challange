@@ -2,9 +2,9 @@
   <div class="empty-directory-wrapper">
     <Breadcrump />
     <div>
-      <span class="material-icons driver"> drive_folder_upload </span>
+      <img src="../../assets/img/drive.png" alt="drive" />
       <h3>There is nothing to show</h3>
-      <div @click.stop="setLoginState(true)">
+      <div @click.stop="setModalState(true)">
         <Button title="Create directory" />
       </div>
     </div>
@@ -31,7 +31,7 @@ export default {
     ...mapGetters("directory", ["directories"]),
   },
   methods: {
-    ...mapActions("modal", ["setLoginState"]),
+    ...mapActions("modal", ["setModalState"]),
     ...mapActions("directory", ["getDirectoryContent"]),
   },
 };

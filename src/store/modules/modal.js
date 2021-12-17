@@ -10,7 +10,7 @@ export const modal = {
     },
   },
   actions: {
-    setLoginState({ commit }, bool) {
+    setModalState({ commit }, bool) {
       commit("SET_VISIBILITY", bool);
     },
   },
