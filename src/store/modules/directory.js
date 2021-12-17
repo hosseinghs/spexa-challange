@@ -4,13 +4,13 @@ import {
   deleteDirectoryApi,
 } from "../../services/directory";
 import { addToArr } from "../../utils/general";
-import { Directory } from "../../models/directory";
+// import { Directory } from "../../models/directory";
 export const directory = {
   namespaced: true,
   state: {
     visible: false,
     newDirectoryTitle: null,
-    directories: new Directory(),
+    directories: [],
   },
   mutations: {
     SET_NEW_DIRECTORY_TITLE(state, title) {

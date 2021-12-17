@@ -4,7 +4,7 @@
       <slot></slot>
     </div>
   </div> -->
-  <v-dialog v-model="visible" v-bind="$attrs" :max-width="maxWidth">
+  <v-dialog v-model="modalVisible" v-bind="$attrs" :max-width="maxWidth">
     <v-card rounded elevation="0">
       <v-container>
         <slot />
@@ -25,9 +25,17 @@ export default {
   },
   computed: {
     ...mapState("modal", ["visible"]),
+    modalVisible: {
+      get() {
+        return this.visible;
+      },
+      set(val) {
+        this.setModalState(val);
+      },
+    },
   },
   methods: {
-    ...mapActions("modal", ["setLoginState"]),
+    ...mapActions("modal", ["setModalState"]),
   },
 };
 </script>
