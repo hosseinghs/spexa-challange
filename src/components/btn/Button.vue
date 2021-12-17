@@ -8,10 +8,6 @@
 export default {
   name: "button-component",
   props: {
-    login: {
-      type: Boolean,
-      default: false,
-    },
     title: {
       type: String,
       default: "title",
