@@ -1,12 +1,15 @@
 <template>
   <div class="directory-item-wrapper">
     <h3>h3</h3>
+    <div>
+      <Input placeholder="title" @inputChange="createNewDirectory($event)" />
+    </div>
     <div class="actions">
       <div @click.stop="setLoginState(false)">
         <Button title="cancel" />
       </div>
       <div>
-        <Button />
+        <Button title="Create directory" />
       </div>
     </div>
   </div>
@@ -14,16 +17,27 @@
 
 <script>
 import { mapActions } from "vuex";
-
+import Input from "../form/Input.vue";
 import Button from "../btn/Button.vue";
 export default {
   name: "directory-item-component",
-  props: {},
+  props: {
+    create: {
+      type: Boolean,
+      default: true,
+    },
+  },
   components: {
+    Input,
     Button,
   },
   methods: {
     ...mapActions("modal", ["setLoginState"]),
+    ...mapActions("directory", ["createNewDirectory"]),
+
+    log(v) {
+      console.log(v);
+    },
   },
 };
 </script>
