@@ -45,6 +45,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: start;
+  width: 100%;
 }
 
 .directory-list-item-wrapper div:last-child {
@@ -60,7 +61,7 @@ export default {
 
 .i .more {
   position: absolute;
-  top: 0px;
+  top: -3px;
   right: 12px;
   font-size: 18px;
   font-weight: bold;
