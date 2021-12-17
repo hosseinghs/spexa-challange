@@ -8,7 +8,9 @@
         <Button title="Create directory" />
       </div>
     </div>
-    <Modal />
+    <Modal>
+      <DirectoryItem />
+    </Modal>
   </div>
 </template>
 
@@ -17,12 +19,14 @@ import { mapActions } from "vuex";
 import Breadcrump from "../breadcrump";
 import Button from "../btn/Button.vue";
 import Modal from "../Modal.vue";
+import DirectoryItem from "./DirectoryItem.vue";
 export default {
   name: "directory-component",
   components: {
     Breadcrump,
     Button,
     Modal,
+    DirectoryItem,
   },
   methods: {
     ...mapActions("modal", ["setLoginState"]),
