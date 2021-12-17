@@ -5,6 +5,7 @@
       <Input
         :rules="[mustFillRule]"
         placeholder="title"
+        :value="title"
         @change="setNewDirectoryTitle($event)"
       />
       <v-row class="actions mt-6 mb-">
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from "vuex";
 import { mustFillRule } from "../../utils/validation";
 import Input from "../form/Input.vue";
 import Button from "../btn/Button.vue";
@@ -32,6 +33,10 @@ export default {
       default: true,
     },
   },
+  computed: {
+    ...mapState("modal", ["visible"]),
+    ...mapGetters("directory", ["title"]),
+  },
   components: {
     Input,
     Button,
@@ -39,11 +44,23 @@ export default {
   methods: {
     mustFillRule,
     ...mapActions("modal", ["setModalState"]),
-    ...mapActions("directory", ["createNewDirectory", "setNewDirectoryTitle"]),
+    ...mapActions("directory", [
+      "createNewDirectory",
+      "setNewDirectoryTitle",
+      "clearDirectoryTitle",
+    ]),
     async submitForm() {
       if (this.$refs.addCategoryForm.validate()) {
         const res = this.createNewDirectory();
         if (res) this.setModalState(false);
+      }
+    },
+  },
+  watch: {
+    visible(val) {
+      if (!val) {
+        this.clearDirectoryTitle();
+        this.$refs.addCategoryForm.resetValidation();
       }
     },
   },
