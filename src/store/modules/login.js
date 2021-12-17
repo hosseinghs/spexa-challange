@@ -26,15 +26,13 @@ export const loginRegister = {
     setLoginState({ commit }, bool) {
       commit("SET_LOGIN_STATE", bool);
     },
-    async loginRegisterUser({ state, commit, dispatch }) {
+    async loginRegisterUser({ state, commit }) {
       const { email, password } = state.userData;
-      if (email && password) {
-        const res = await loginRegisterApi({ email, password });
-        commit("SET_LOGIN_STATE", true);
-        window.localStorage.setItem("email", email);
-        window.localStorage.setItem("rootId", res.data.data.root_directory_id);
-        return true;
-      } else dispatch("notifModule/setNotifState", { root: true });
+      const res = await loginRegisterApi({ email, password });
+      commit("SET_LOGIN_STATE", true);
+      window.localStorage.setItem("email", email);
+      window.localStorage.setItem("rootId", res.data.data.root_directory_id);
+      return true;
     },
   },
   getters: {
