@@ -15,6 +15,8 @@ export default {
 .breadcrump-wrapper {
   display: flex;
   align-items: center;
+  width: 100%;
+  margin-top: 40px;
 }
 .breadcrump-wrapper img {
   width: 20px;
