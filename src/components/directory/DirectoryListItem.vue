@@ -1,12 +1,8 @@
 <template>
   <div class="directory-list-item-wrapper">
-    <div>
-      <div>
-        <img src="../../assets/img/more.png" alt="more-icon" />
-      </div>
-      <div>
-        <img src="../../assets/img/folder.png" alt="more-icon" />
-      </div>
+    <div class="i">
+      <span @click="showOptions">...</span>
+      <img src="../../assets/img/folder.png" alt="more-icon" />
     </div>
   </div>
 </template>
@@ -17,4 +13,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.i {
+  position: relative;
+}
+
+.i span {
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
