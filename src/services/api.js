@@ -15,8 +15,19 @@ const Api = {
     }
     axios.interceptors.response.use(
       function (res) {
-        setToken(res.data.data.access_token);
-        Api.addAuthorizationHeader();
+        if (res.data.data.refresh_token) {
+          setToken(res.data.data.access_token);
+          window.localStorage.setItem(
+            "rootId",
+            res.data.data.root_directory_id
+          );
+          window.localStorage.setItem(
+            "refreshToken",
+            res.data.data.refresh_token
+          );
+          Api.addAuthorizationHeader();
+        }
+        return res;
       },
       function (err) {
         if (err.response && err.response.status === 401) {

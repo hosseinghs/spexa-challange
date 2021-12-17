@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <DirectoyListItem :items="directories" />
-  </div>
+  <DirectoyListItem :items="directories" />
 </template>
 
 <script>
