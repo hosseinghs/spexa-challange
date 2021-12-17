@@ -1,12 +1,6 @@
 <template>
-  <div class="input-wrapper">
-    <input
-      v-bind="$attrs"
-      @change="$emit('inputChange', $event.target.value)"
-    />
-  </div>
+  <v-text-field v-bind="$attrs" v-on="$listeners" outlined />
 </template>
-
 <script>
 export default {
   name: "input-component",

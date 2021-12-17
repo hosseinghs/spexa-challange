@@ -1,7 +1,7 @@
 <template>
-  <button :class="login ? 'primary' : 'secondry'" v-bind="$attrs">
+  <v-btn v-bind="$attrs" v-on="$listeners">
     {{ title }}
-  </button>
+  </v-btn>
 </template>
 
 <script>
@@ -20,25 +20,4 @@ export default {
 };
 </script>
 
-<style scoped>
-button {
-  width: 100%;
-  padding: 12px 32px;
-  border-radius: 4px;
-  border: 1px solid;
-  transition: 0.2s ease-in-out;
-}
-.primary {
-  background-color: #000;
-  color: #fff;
-  transition: background-color 0.1s ease-in;
-}
-.secondry {
-  background-color: #fff;
-  color: #000;
-}
-.primary:hover,
-.secondry:hover {
-  background-color: #555;
-}
-</style>
+<style scoped></style>
