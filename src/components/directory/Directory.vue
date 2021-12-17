@@ -1,6 +1,6 @@
 <template>
   <div class="directory-wrapper">
-    <DirectoryList v-if="directories.length > 0" />
+    <DirectoryList v-if="directories.length > 0" :items="directories" />
     <EmptyDirectory v-else />
   </div>
 </template>
