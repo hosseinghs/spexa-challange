@@ -1,5 +1,5 @@
 <template>
-  <v-btn v-bind="$attrs" v-on="$listeners">
+  <v-btn v-bind="$attrs" v-on="$listeners" style="width: 100%">
     {{ title }}
   </v-btn>
 </template>
@@ -19,5 +19,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>
