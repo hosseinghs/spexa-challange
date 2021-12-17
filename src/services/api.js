@@ -13,7 +13,16 @@ const Api = {
     } else {
       this.removeAuthorizationHeader();
     }
+    axios.interceptors.response.use(
+      function () {},
+      function (err) {
+        if (err.response && err.response.status === 401) {
+          console.log("boz");
+        }
+      }
+    );
   },
+
   removeAuthorizationHeader() {
     delete axios.defaults.headers.common["Authorization"];
   },
