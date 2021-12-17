@@ -4,3 +4,8 @@ export function createObjWithDefaultValues(self, defaults, options) {
     self[k] = res[k];
   });
 }
+
+export function addToArr(arr, v) {
+  if (Array.isArray(v)) arr.push(...v);
+  else arr.push(v);
+}

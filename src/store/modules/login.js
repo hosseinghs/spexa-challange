@@ -34,6 +34,7 @@ export const loginRegister = {
         const res = await loginRegisterApi({ email, password });
         commit("SET_LOGIN_STATE", true);
         window.localStorage.setItem("email", email);
+        window.localStorage.setItem("rootId", res.data.data.root_directory_id);
         setToken(res.data.data.access_token);
         Api.addAuthorizationHeader();
         return true;
