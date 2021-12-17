@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-app-bar v-if="isLoggedIn" app>
-      <Button @click="logout()" title="Logout" />
+      <div>
+        <Button @click="logout()" title="Logout" />
+      </div>
       <span>{{ userEmail }}</span>
     </v-app-bar>
     <v-main>
@@ -11,9 +13,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import Button from "./components/btn/Button.vue";
-import { deleteToken } from "./services/jwt";
+import { deleteToken, getToken } from "./services/jwt";
 export default {
   name: "App",
   data: () => ({
@@ -30,10 +32,18 @@ export default {
   components: {
     Button,
   },
+  created() {
+    const token = getToken();
+    this.setLoginState(!!token);
+    if (token) this.$router.push({ path: "/directories" });
+  },
   methods: {
     deleteToken,
+    getToken,
+    ...mapActions("loginRegister", ["setLoginState"]),
     logout() {
       this.deleteToken();
+      this.setLoginState(false);
       this.$router.push({ path: "/" });
     },
   },
