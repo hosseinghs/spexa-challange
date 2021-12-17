@@ -1,5 +1,9 @@
 <template>
-  <div class="modal-wrapper" @click.self="setLoginState(false)">
+  <div
+    v-show="visible"
+    class="modal-wrapper"
+    @click.self="setLoginState(false)"
+  >
     <div class="modal-content">hi</div>
   </div>
 </template>
@@ -27,7 +31,8 @@ export default {
   top: 0;
   left: 0;
   overflow: hidden;
-  background: rgba(#fff, 0.4);
+  background-color: #fff;
+  opacity: 0.4;
   z-index: 10;
 }
 .modal-wrapper > div {
