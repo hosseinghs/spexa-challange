@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueAxios from "vue-axios";
-import JWT from "./jwt";
+import { getToken, setToken } from "./jwt";
 import axios from "axios";
 import { API_URL } from "../../config/HTTPS";
 
@@ -8,13 +8,16 @@ const Api = {
   init() {
     Vue.use(VueAxios, axios);
     Vue.axios.defaults.baseURL = API_URL;
-    if (JWT.getToken()) {
+    if (getToken()) {
       this.addAuthorizationHeader();
     } else {
       this.removeAuthorizationHeader();
     }
     axios.interceptors.response.use(
-      function () {},
+      function (res) {
+        setToken(res.data.data.access_token);
+        Api.addAuthorizationHeader();
+      },
       function (err) {
         if (err.response && err.response.status === 401) {
           console.log("boz");
@@ -27,9 +30,7 @@ const Api = {
     delete axios.defaults.headers.common["Authorization"];
   },
   addAuthorizationHeader() {
-    Vue.axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${JWT.getToken()}`;
+    Vue.axios.defaults.headers.common["Authorization"] = `Bearer ${getToken()}`;
   },
 
   query(resource, params) {
