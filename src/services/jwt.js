@@ -14,6 +14,7 @@ export const deleteToken = () => {
   window.localStorage.removeItem(TOKEN_KEY);
   window.localStorage.removeItem("rootId");
   window.localStorage.removeItem("email");
+  window.localStorage.removeItem("refreshToken");
 };
 
 export default { TOKEN_KEY, getToken, setToken, deleteToken };
