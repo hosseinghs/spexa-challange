@@ -4,13 +4,13 @@ import store from "./store";
 import Api from "./services/api";
 import VueRouter from "vue-router";
 import vuetify from "./plugins/vuetify";
-import routes from "./router";
+import router from "./router";
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
 Api.init();
 new Vue({
-  routes,
+  router,
   store,
   vuetify,
   render: (h) => h(App),
