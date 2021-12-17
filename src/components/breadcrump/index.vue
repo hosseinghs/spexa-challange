@@ -1,6 +1,6 @@
 <template>
   <div class="breadcrump-wrapper">
-    <span class="material-icons"> home </span>
+    <img src="../../assets/img/home.png" alt="home" />
     <span>Home</span>
   </div>
 </template>
@@ -15,5 +15,8 @@ export default {
 .breadcrump-wrapper {
   display: flex;
   align-items: center;
+}
+.breadcrump-wrapper img {
+  width: 20px;
 }
 </style>
