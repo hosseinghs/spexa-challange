@@ -12,7 +12,7 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item v-for="{ title, id } in items" :key="id">
+        <v-list-item class="px-0" v-for="{ title, id } in items" :key="id">
           <v-list-item-title>{{ title }}</v-list-item-title>
         </v-list-item>
       </v-list>
@@ -21,7 +21,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    items: {
+      type: Array,
+      default: () => [],
+    },
+  },
+};
 </script>
 
 <style></style>
