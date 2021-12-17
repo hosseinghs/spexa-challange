@@ -1,10 +1,12 @@
 <template>
   <div
-    v-show="visible"
+    v-if="visible"
     class="modal-wrapper"
     @click.self="setLoginState(false)"
   >
-    <div class="modal-content">hi</div>
+    <div class="modal-content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -32,12 +34,7 @@ export default {
   left: 0;
   overflow: hidden;
   background-color: #fff;
-  opacity: 0.4;
   z-index: 10;
-}
-.modal-wrapper > div {
-  width: 100%;
-  z-index: 20;
 }
 
 .modal-content {
@@ -45,5 +42,8 @@ export default {
   text-align: left;
   border-radius: 8px;
   padding: 1rem;
+  width: 30%;
+  margin: 0 auto;
+  z-index: 20;
 }
 </style>
