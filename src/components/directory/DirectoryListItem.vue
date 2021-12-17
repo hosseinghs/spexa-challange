@@ -1,7 +1,9 @@
 <template>
   <div class="directory-list-item-wrapper">
     <div v-for="{ id, title } in items" :key="id" class="i">
-      <div class="more" @click="showOptions">...</div>
+      <div class="more" @click="showOptions">
+        <Dropdown :items="dropdownItems" />
+      </div>
       <img src="../../assets/img/folder.png" alt="more-icon" />
       <span>{{ title }}</span>
     </div>
@@ -18,11 +20,13 @@
 import { mapActions } from "vuex";
 import Modal from "../Modal.vue";
 import DirectoryItem from "./DirectoryItem.vue";
+import Dropdown from "../Dropdown.vue";
 export default {
   name: "directory-list-item-component",
   components: {
     Modal,
     DirectoryItem,
+    Dropdown,
   },
   props: {
     items: {
@@ -30,7 +34,14 @@ export default {
       default: () => [],
     },
   },
-
+  data() {
+    return {
+      dropdownItems: [
+        { id: 1, title: "open", icon: "" },
+        { id: 2, title: "delete", icon: "" },
+      ],
+    };
+  },
   methods: {
     ...mapActions("modal", ["setModalState"]),
     showOptions() {
