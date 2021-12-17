@@ -1,6 +1,7 @@
 import {
   createNewDirectoryApi,
   getDirectoryContentApi,
+  deleteDirectoryApi,
 } from "../../services/directory";
 import { addToArr } from "../../utils/general";
 export const directory = {
@@ -28,6 +29,10 @@ export const directory = {
       if (res.status === 200) {
         commit("SET_DIRECTORIES_LIST", res.data.data.directories);
       }
+    },
+    async deleteDirectory(context, id) {
+      const res = await deleteDirectoryApi(id);
+      console.log(res);
     },
   },
   getters: {
