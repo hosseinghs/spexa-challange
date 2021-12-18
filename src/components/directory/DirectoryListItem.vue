@@ -1,8 +1,11 @@
 <template>
   <div class="directory-list-item-wrapper">
     <div v-for="{ id, title } in items" :key="id" class="i">
-      <div class="more" @click="showOptions">
-        <Dropdown :items="dropdownItems" />
+      <div class="more">
+        <Dropdown
+          :items="dropdownItems"
+          @dropdownAction="dropdownAction({ action: $event, dirId: id })"
+        />
       </div>
       <img src="../../assets/img/folder.png" alt="more-icon" />
       <span>{{ title }}</span>
@@ -44,8 +47,9 @@ export default {
   },
   methods: {
     ...mapActions("modal", ["setModalState"]),
-    showOptions() {
-      console.log("show options");
+    ...mapActions("directory", ["deleteDirectory"]),
+    dropdownAction({ action, dirId }) {
+      if (action === 2) this.deleteDirectory(dirId);
     },
   },
 };

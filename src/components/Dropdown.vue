@@ -16,6 +16,7 @@
           class="px-0"
           v-for="{ title, id, icon } in items"
           :key="id"
+          @click="$emit('dropdownAction', id)"
         >
           <template>
             <img :src="icon" />
