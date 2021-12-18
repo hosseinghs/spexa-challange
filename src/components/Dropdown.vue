@@ -20,7 +20,9 @@
         >
           <template>
             <img :src="icon" />
-            <v-list-item-title> {{ title }}</v-list-item-title>
+            <v-list-item-title class="dropdown-items">
+              {{ title }}</v-list-item-title
+            >
           </template>
         </v-list-item>
       </v-list>
@@ -39,4 +41,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.dropdown-items {
+  font-size: 12px;
+}
+</style>
