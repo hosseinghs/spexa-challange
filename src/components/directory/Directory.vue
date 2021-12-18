@@ -22,7 +22,8 @@ export default {
     ...mapActions("directory", ["getDirectoryContent"]),
   },
   created() {
-    this.getDirectoryContent();
+    const rootId = localStorage.getItem("rootId");
+    if (rootId) this.getDirectoryContent();
   },
 };
 </script>
