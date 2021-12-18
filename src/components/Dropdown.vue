@@ -2,14 +2,14 @@
   <div class="text-center">
     <v-menu style="max-width: 50px" offset-y>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          style="background: transparent"
-          elevation="0"
-          dark
+        <span
           v-bind="attrs"
           v-on="on"
+          style="background: transparent; color: #000"
+          elevation="0"
         >
-        </v-btn>
+          ...
+        </span>
       </template>
       <v-list>
         <v-list-item
