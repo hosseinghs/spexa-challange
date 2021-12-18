@@ -2,9 +2,9 @@
   <div class="empty-directory-wrapper">
     <div>
       <img src="../../assets/img/drive.png" alt="drive" />
-      <h3>There is nothing to show</h3>
+      <h3 class="my-6">There is nothing to show</h3>
       <div @click.stop="setModalState(true)">
-        <Button title="Create directory" />
+        <Button dark primary title="Create directory" />
       </div>
     </div>
     <Modal>
