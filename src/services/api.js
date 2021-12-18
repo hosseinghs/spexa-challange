@@ -31,8 +31,19 @@ const Api = {
       },
       function (err) {
         if (err.response && err.response.status === 401) {
-          console.log("boz");
+          axios
+            .post("user/refresh", {
+              refresh_token: localStorage.getItem("refreshToken"),
+            })
+            .then((res) => {
+              setToken(res.data.data.access_token);
+              localStorage.setItem("refreshToken", res.data.data.refresh_token);
+            })
+            .catch((err) => {
+              console.log("catch : ", err);
+            });
         }
+        return err;
       }
     );
   },
