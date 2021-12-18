@@ -4,13 +4,19 @@ import {
   deleteDirectoryApi,
 } from "../../services/directory";
 import { addToArr } from "../../utils/general";
-// import { Directory } from "../../models/directory";
 export const directory = {
   namespaced: true,
   state: {
     visible: false,
     newDirectoryTitle: null,
     directories: [],
+    breadCrump: [
+      {
+        text: "Home",
+        disabled: false,
+        href: "/directories",
+      },
+    ],
   },
   mutations: {
     SET_NEW_DIRECTORY_TITLE(state, title) {
@@ -24,6 +30,9 @@ export const directory = {
     CLEAR_DIRECTORY_TITLE(state) {
       state.newDirectoryTitle = "";
     },
+    ADD_NEW_BREADCRUMP_ITEM(state, { text, disabled, href }) {
+      state.breadCrump.push({ text, disabled, href });
+    },
   },
   actions: {
     setNewDirectoryTitle({ commit }, title) {
@@ -31,6 +40,9 @@ export const directory = {
     },
     clearDirectoryTitle({ commit }) {
       commit("CLEAR_DIRECTORY_TITLE");
+    },
+    addNewBreadcrumpItem({ commit }, { text, disabled, href }) {
+      commit("ADD_NEW_BREADCRUMP_ITEM", { text, disabled, href });
     },
     async createNewDirectory({ state, dispatch }) {
       const title = state.newDirectoryTitle;
@@ -50,5 +62,6 @@ export const directory = {
   getters: {
     directories: (state) => state.directories,
     title: (state) => state.newDirectoryTitle,
+    breadCrump: (state) => state.breadCrump,
   },
 };

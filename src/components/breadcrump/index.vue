@@ -1,13 +1,17 @@
 <template>
   <div class="breadcrump-wrapper">
     <img src="../../assets/img/home.png" alt="home" />
-    <span>Home</span>
+    <v-breadcrumbs :items="breadCrump"></v-breadcrumbs>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "breadcrump-component",
+  computed: {
+    ...mapGetters("directory", ["breadCrump"]),
+  },
 };
 </script>
 
@@ -20,5 +24,10 @@ export default {
 }
 .breadcrump-wrapper img {
   width: 20px;
+}
+
+.v-application ul {
+  padding: 0;
+  color: #000;
 }
 </style>
