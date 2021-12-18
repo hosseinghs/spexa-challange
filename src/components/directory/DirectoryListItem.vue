@@ -40,8 +40,8 @@ export default {
   data() {
     return {
       dropdownItems: [
-        { id: 1, title: "open", icon: "../../assets/img/open.png" },
-        { id: 2, title: "delete", icon: "@/assets/img/trash.png" },
+        { id: 1, title: "Open", icon: "../../assets/img/open.png" },
+        { id: 2, title: "Delete", icon: "@/assets/img/trash.png" },
       ],
     };
   },
