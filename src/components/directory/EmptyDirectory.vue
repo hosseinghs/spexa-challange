@@ -40,4 +40,7 @@ export default {
   display: grid;
   place-items: center;
 }
+img {
+  width: 100px;
+}
 </style>
