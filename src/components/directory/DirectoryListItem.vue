@@ -1,14 +1,14 @@
 <template>
   <div class="directory-list-item-wrapper">
-    <div v-for="{ id, title } in items" :key="id" class="i">
+    <div v-for="item in items" :key="item.id" class="i">
       <div class="more">
         <Dropdown
           :items="dropdownItems"
-          @dropdownAction="dropdownAction({ action: $event, dirId: id })"
+          @dropdownAction="dropdownAction({ action: $event, item: item })"
         />
       </div>
       <img src="../../assets/img/folder.png" alt="more-icon" />
-      <span>{{ title }}</span>
+      <span>{{ item.title }}</span>
     </div>
     <div style="cursor: pointer" @click="setModalState(true)">
       <img src="../../assets/img/add.png" alt="add" />
@@ -47,9 +47,16 @@ export default {
   },
   methods: {
     ...mapActions("modal", ["setModalState"]),
-    ...mapActions("directory", ["deleteDirectory"]),
-    dropdownAction({ action, dirId }) {
-      if (action === 2) this.deleteDirectory(dirId);
+    ...mapActions("directory", ["deleteDirectory", "addNewBreadcrumpItem"]),
+    dropdownAction({ action, item }) {
+      if (action === 2) this.deleteDirectory(item.id);
+      else if (action === 1) {
+        this.addNewBreadcrumpItem({
+          text: item.title,
+          disabled: false,
+          href: `/${item.title}`,
+        });
+      }
     },
   },
 };
