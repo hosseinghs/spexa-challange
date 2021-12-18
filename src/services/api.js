@@ -18,13 +18,16 @@ const Api = {
         if (res.data.data.refresh_token) {
           setToken(res.data.data.access_token);
           window.localStorage.setItem(
-            "rootId",
-            res.data.data.root_directory_id
-          );
-          window.localStorage.setItem(
             "refreshToken",
             res.data.data.refresh_token
           );
+          const rootId = localStorage.getItem("rootId");
+          if (!rootId) {
+            window.localStorage.setItem(
+              "rootId",
+              res.data.data.root_directory_id
+            );
+          }
           Api.addAuthorizationHeader();
         }
         return res;
