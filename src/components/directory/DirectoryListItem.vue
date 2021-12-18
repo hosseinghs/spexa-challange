@@ -83,8 +83,8 @@ export default {
 
 .i .more {
   position: absolute;
-  top: -3px;
-  right: 12px;
+  top: -6px;
+  right: 13px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
