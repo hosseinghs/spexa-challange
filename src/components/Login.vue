@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrapper">
     <v-col cols="3">
-      <v-card elevation="0">
+      <v-card style="background-color: transparent" elevation="0">
         <v-form
           class="text-center"
           ref="loginForm"
