@@ -1,6 +1,6 @@
 <template>
   <div class="directory-item-wrapper">
-    <h3 class="mb-6">h3</h3>
+    <h3 class="mb-6">Create Directory</h3>
     <v-form ref="addCategoryForm" @submit.prevent="submitForm()">
       <Input
         :rules="[mustFillRule]"
