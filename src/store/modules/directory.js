@@ -52,8 +52,8 @@ export const directory = {
     },
     async createNewDirectory({ state, dispatch }) {
       const title = state.newDirectoryTitle;
-      await createNewDirectoryApi(title);
-      dispatch("getDirectoryContent");
+      const res = await createNewDirectoryApi(title);
+      if (res.status === 200) dispatch("getDirectoryContent");
     },
     async getDirectoryContent({ commit }) {
       const res = await getDirectoryContentApi();
