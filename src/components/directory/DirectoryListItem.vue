@@ -7,7 +7,7 @@
       <img src="../../assets/img/folder.png" alt="more-icon" />
       <span>{{ title }}</span>
     </div>
-    <div @click="setModalState(true)">
+    <div style="cursor: pointer" @click="setModalState(true)">
       <img src="../../assets/img/add.png" alt="add" />
     </div>
     <Modal>
@@ -37,8 +37,8 @@ export default {
   data() {
     return {
       dropdownItems: [
-        { id: 1, title: "open", icon: "" },
-        { id: 2, title: "delete", icon: "" },
+        { id: 1, title: "open", icon: "../../assets/img/open.png" },
+        { id: 2, title: "delete", icon: "@/assets/img/trash.png" },
       ],
     };
   },

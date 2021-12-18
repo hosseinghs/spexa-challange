@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-menu offset-y>
+    <v-menu style="max-width: 50px" offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
           style="background: transparent"
@@ -12,8 +12,15 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item class="px-0" v-for="{ title, id } in items" :key="id">
-          <v-list-item-title>{{ title }}</v-list-item-title>
+        <v-list-item
+          class="px-0"
+          v-for="{ title, id, icon } in items"
+          :key="id"
+        >
+          <template>
+            <img :src="icon" />
+            <v-list-item-title> {{ title }}</v-list-item-title>
+          </template>
         </v-list-item>
       </v-list>
     </v-menu>
