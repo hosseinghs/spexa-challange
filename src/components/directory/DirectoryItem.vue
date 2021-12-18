@@ -6,6 +6,7 @@
         :rules="[mustFillRule]"
         placeholder="title"
         :value="title"
+        autofocus
         @change="setNewDirectoryTitle($event)"
       />
       <v-row class="actions mt-6 mb-">
