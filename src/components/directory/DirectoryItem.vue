@@ -14,7 +14,7 @@
           <Button @click.stop="setModalState(false)" title="cancel" />
         </v-col>
         <v-col cols="7">
-          <Button type="submit" dark title="Create directory" />
+          <Button primary type="submit" dark title="Create directory" />
         </v-col>
       </v-row>
     </v-form>

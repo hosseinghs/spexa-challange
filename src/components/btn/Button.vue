@@ -1,5 +1,12 @@
 <template>
-  <v-btn elevation="0" v-bind="$attrs" v-on="$listeners" style="width: 100%">
+  <v-btn
+    elevation="0"
+    style="width: 100%"
+    rounded-sm
+    :class="primary ? '' : '__secondry'"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     {{ title }}
   </v-btn>
 </template>
@@ -12,6 +19,17 @@ export default {
       type: String,
       default: "title",
     },
+    primary: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
+
+<style scoped>
+.__secondry {
+  border: 1px solid #000;
+  background-color: #fff !important;
+}
+</style>

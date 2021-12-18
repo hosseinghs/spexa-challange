@@ -20,7 +20,13 @@
             :rules="[mustFillRule]"
             @change="setUserData({ k: 'password', v: $event })"
           />
-          <Button type="submit" dark class="py-6" title="Register / Login" />
+          <Button
+            primary
+            type="submit"
+            dark
+            class="py-6"
+            title="Register / Login"
+          />
         </v-form>
       </v-card>
     </v-col>
