@@ -1,9 +1,4 @@
 <template>
-  <!-- <div v-if="" class="modal-wrapper" @click.self="setLoginState(false)">
-    <div class="modal-content">
-      <slot></slot>
-    </div>
-  </div> -->
   <v-dialog v-model="modalVisible" v-bind="$attrs" :max-width="maxWidth">
     <v-card rounded elevation="0">
       <v-container>
