@@ -52,7 +52,7 @@ export default {
     ...mapActions("loginRegister", ["setUserData", "loginRegisterUser"]),
     async submitForm() {
       if (this.$refs.loginForm.validate()) {
-        const res = this.loginRegisterUser();
+        const res = await this.loginRegisterUser();
         if (res) this.$router.push("/directories");
       }
     },
