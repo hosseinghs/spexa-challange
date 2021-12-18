@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar v-if="isLoggedIn" app>
+    <v-app-bar elevation="0" color="#fff" v-if="isLoggedIn" app>
       <div>
         <Button @click="logout()" title="Logout" />
       </div>
@@ -50,6 +50,9 @@ export default {
 };
 </script>
 <style scoped>
+::v-deep .v-main__wrap {
+  background-color: #f2f2f2;
+}
 span {
   margin-left: 10px;
 }
