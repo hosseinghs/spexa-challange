@@ -33,6 +33,12 @@ export const directory = {
     ADD_NEW_BREADCRUMP_ITEM(state, { text, disabled, href }) {
       state.breadCrump.push({ text, disabled, href });
     },
+    DELETE_DIRECTORY(state, id) {
+      const arr = state.directories;
+      const filterdArr = arr.filter((dir) => dir.id !== id);
+      arr.splice(0);
+      addToArr(arr, filterdArr);
+    },
   },
   actions: {
     setNewDirectoryTitle({ commit }, title) {
@@ -54,9 +60,9 @@ export const directory = {
       if (res.status === 200)
         commit("SET_DIRECTORIES_LIST", res.data.data.directories);
     },
-    async deleteDirectory(context, id) {
+    async deleteDirectory({ commit }, id) {
       const res = await deleteDirectoryApi(id);
-      console.log(res);
+      if (res.status === 200) commit("DELETE_DIRECTORY", id);
     },
   },
   getters: {

@@ -12,5 +12,5 @@ export function getDirectoryContentApi() {
 }
 
 export function deleteDirectoryApi(id) {
-  return Api.delete(`${baseUrl}/${rootId}/${id}`);
+  return Api.delete(`${baseUrl}/${id}`);
 }
