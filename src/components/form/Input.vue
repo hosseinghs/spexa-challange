@@ -8,7 +8,5 @@ export default {
 </script>
 
 <style>
-.v-input__slot {
-  background-color: #fff !important;
-}
+
 </style>

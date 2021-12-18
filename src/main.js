@@ -5,6 +5,7 @@ import Api from "./services/api";
 import VueRouter from "vue-router";
 import vuetify from "./plugins/vuetify";
 import router from "./router";
+import "./assets/main.css";
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 
