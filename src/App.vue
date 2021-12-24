@@ -6,6 +6,7 @@
       </div>
       <span>{{ userEmail }}</span>
     </v-app-bar>
+    <Notif />
     <v-main>
       <router-view />
     </v-main>
@@ -14,13 +15,17 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Button from "./components/btn/Button.vue";
 import { deleteToken, getToken } from "./services/jwt";
+import Button from "./components/btn/Button.vue";
+import Notif from "./components/Notif.vue";
+
 export default {
   name: "App",
-  data: () => ({
-    //
-  }),
+  components: {
+    Button,
+    Notif,
+  },
+
   computed: {
     ...mapGetters("loginRegister", ["isLoggedIn"]),
     userEmail() {
@@ -29,9 +34,7 @@ export default {
       else return null;
     },
   },
-  components: {
-    Button,
-  },
+
   created() {
     const token = getToken();
     this.setLoginState(!!token);
