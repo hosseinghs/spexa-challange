@@ -13,13 +13,11 @@
       </template>
       <v-list>
         <v-list-item
-          class="px-0"
-          v-for="{ title, id, icon } in items"
+          v-for="{ title, id } in items"
           :key="id"
           @click="$emit('dropdownAction', id)"
         >
           <template>
-            <img :src="icon" />
             <v-list-item-title class="dropdown-items">
               {{ title }}</v-list-item-title
             >
